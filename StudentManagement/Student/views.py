@@ -29,3 +29,8 @@ def add_student(request):
         return redirect("/student/home")
 
     return render(request, 'addStudent.html')
+
+def delete_student(request, roll):
+    std = Student.objects.get(pk=roll)
+    std.delete()
+    return redirect("/student/home")
