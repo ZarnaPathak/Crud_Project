@@ -27,10 +27,31 @@ def add_student(request):
         # save object to add info in table
         std.save()
         return redirect("/student/home")
-
     return render(request, 'addStudent.html')
 
 def delete_student(request, roll):
     std = Student.objects.get(pk=roll)
     std.delete()
+    return redirect("/student/home")
+
+def update_student(request, roll):
+    std = Student.objects.get(pk=roll)
+    return render(request, 'update.html', {'std':std})
+
+def save_update_student(request, roll):
+    stds_roll = request.POST.get("std_roll")        
+    stds_name = request.POST.get("std_name")        
+    stds_email = request.POST.get("std_email")        
+    stds_address = request.POST.get("std_address")        
+    stds_phone = request.POST.get("std_phone") 
+
+    std = Student.objects.get(pk=roll)
+
+    std.roll = stds_roll
+    std.name = stds_name
+    std.email = stds_email
+    std.address = stds_address
+    std.phone = stds_phone
+
+    std.save()
     return redirect("/student/home")
