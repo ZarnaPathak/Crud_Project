@@ -13,6 +13,42 @@
   <body>
     {% include "navbar.html" %}
     <h1 class='text-center my-4'>Students Management</h1>
+    <h2 class='text-center my-3'>List of Students</h2>
+
+    <div class="conatiner">
+      <div class="row">
+        <div class="col-md-9 offset-md-1 my-4">
+          <div class="card">
+            <div class="card-body border border-2 border-secondary">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>Sr.no</th>
+                    <th>Roll No</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>Phone</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for s in std %}
+                    <tr>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{s.roll}}</td>
+                      <td>{{s.name}}</td>
+                      <td>{{s.email}}</td>
+                      <td>{{s.address}}</td>
+                      <td>{{s.phone}}</td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
 

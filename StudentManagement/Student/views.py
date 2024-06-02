@@ -3,7 +3,8 @@ from .models import Student
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    std = Student.objects.all()
+    return render(request, 'home.html', {'std': std})
 
 def add_student(request):
     if request.method == "POST":
